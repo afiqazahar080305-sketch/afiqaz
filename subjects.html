@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Library | ASAS LEARNING</title>
+    <link rel="stylesheet" href="Style_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="subjects-page">
+
+<audio id="bgMusic" loop>
+        <source src="audios/a.mp3" type="audio/mpeg">
+    </audio>
+
+<nav class="navbar">
+    <div class="logo-clock-container" style="display: flex; align-items: center; gap: 15px;">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="logo">ASAS<span>LEARNING</span></div>
+        </a>
+        <div id="nav-clock" style="font-weight: 600; color: var(--primary); font-family: monospace; background: rgba(99, 102, 241, 0.1); padding: 4px 10px; border-radius: 8px;">
+            00:00:00
+        </div>
+    </div>
+
+    <div class="nav-menu">
+        <a href="index.html" class="active">About Us</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="courses.html">Courses</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="btn-nav-primary">Join for Free</a>
+    </div>
+</nav>
+
+<div class="volume-container">
+    <span id="volIcon">🔊</span>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+</div>
+
+    <header class="subjects-header">
+        <h1>SPM Mastery <span class="gradient-text">Library</span></h1>
+        <p>Expert-curated resources for Malaysia's core secondary curriculum.</p>
+        
+        <div class="filter-container">
+            <input type="text" id="subjectSearch" placeholder="Search subjects (e.g. Physics)..." class="subject-search">
+            
+            <div class="filter-tags" id="filterTags">
+                <span class="f-tag active" data-filter="all">All</span>
+                <span class="f-tag" data-filter="core">Core Subjects</span>
+                <span class="f-tag" data-filter="science">Science Stream</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="subjects-grid" id="subjectsGrid">
+        <div class="subject-card" data-category="science">
+            <div class="subject-card-header"><div class="subject-icon">🚀</div><h3>Physics</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>Don't just memorize formulas; memorize "Conditions": Many students know $F = ma$, but they forget it only applies when mass is constant. Always teach the "Why" and "When."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>KF 01 UNDERSTAND</strong><span class="timestamp">10:30</span></div></li>
+                    <li><div class="chapter-info"><strong>KF 04 EVALUATE</strong><span class="timestamp">20:30</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Force and Motion II</strong><p>Resultant forces, resolution of forces, and elasticity (Hooke’s Law).</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Quantum</strong><p>Photons, Photoelectric Effect, and Einstein’s Equation.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/ixaui9wYe2A?si=WMX5KJ-izkmHB1Ce&amp;start=370')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Physics')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="science">
+            <div class="subject-card-header"><div class="subject-icon">📐</div><h3>Add-Math</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>Sketch to Visualize: Whether it's a Trigonometric function or a Normal Distribution curve, tell your students: "If you can't see it, you can't solve it." Always do a quick 5-second sketch.</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>ALGEBRA QUESTIONS</strong><span class="timestamp">14:00</span></div></li>
+                    <li><div class="chapter-info"><strong>GEOMETRY QUESTIONS</strong><span class="timestamp">24:10</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Circular Measure</strong><p>how to calculate the length of a curve and the area of a circle slice</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Kinematics of Linear Motion</strong><p>tracks the movement of an object along a straight line by using the rules of calculus.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/3gH36DBdbSY?si=rVK9HE5MOO6-9iXO&amp;start=370')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Add-Math')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="science">
+            <div class="subject-card-header"><div class="subject-icon">🧪</div><h3>Chemistry</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>Observe the Color Changes: Chemistry is visual. Marks are often awarded for describing observations (e.g., "the blue solution turns colorless" or "a pungent gas is released").</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>REMEMBERING QUESTIONS</strong><span class="timestamp">07:00</span></div></li>
+                    <li><div class="chapter-info"><strong>ANALYSIS QUESTIONS</strong><span class="timestamp">18:00</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Redox Equilibrium</strong><p>Studying reactions where electrons are transferred</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Consumer & Industrial Chemistry</strong><p>Looking at how we mass-produce ammonia for fertilizers.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/Oc8vI5effkk?si=ttrvv96KpCSHiGxP&amp;start=420')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Chemistry')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="science">
+            <div class="subject-card-header"><div class="subject-icon">🧬</div><h3>Biology</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>Draw to Describe: If a student struggles to explain a process like Mitosis or the Heartbeat, tell them to draw it first. If they can draw the stages, the labels become their "essay points."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>APPLYING QUESTIONS</strong><span class="timestamp">38:20</span></div></li>
+                    <li><div class="chapter-info"><strong>ANALYZING QUESTIONS</strong><span class="timestamp">41:30</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Organization Plant Tissue & Growth</strong><p>Exploring how plants breathe and how gases move across different surfaces.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Environmental Sustainability</strong><p>One of the most effective ways to preserve non-renewable resources</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/pp5ch2j7c-Y?si=Sko8-Eo0DTMvSPFj&amp;start=380')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Biology')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="core">
+            <div class="subject-card-header"><div class="subject-icon">📜</div><h3>Sejarah</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>"The Chronological Chain: Don't memorize chapters in isolation. Treat the syllabus like a movie: The struggle against colonization (Form 4) leads directly to the birth of a new nation (Form 5)."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>TIPS FOR ANSWERING K1</strong><span class="timestamp">12:30</span></div></li>
+                    <li><div class="chapter-info"><strong>FINAL PREPARATION</strong><span class="timestamp">45:30</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>National Sovereignty</strong><p>Defining what a "Sovereign State" means and why it is vital for our identity.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Foreign Policy</strong><p>Has evolved since independence to adapt to changing global politics</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/FGiBc4YMJb4?si=mRC3sJhAa9WWo70u&amp;start=360')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Sejarah')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="core">
+            <div class="subject-card-header"><div class="subject-icon">🔢</div><h3>Mathematics</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>"Calculator Mastery: Familiarize yourself with your scientific calculator’s "Table" and "Equation" modes. It is a powerful tool for checking your quadratic roots or finding values for linear graphs quickly."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>NUMBER BASIS</strong><span class="timestamp">15:20</span></div></li>
+                    <li><div class="chapter-info"><strong>STRAIGHT LINE</strong><span class="timestamp">24:10</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Variation</strong><p>You study how one value changes in direct or inverse relation to another.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Mathematical Modeling</strong><p>How to turn real-world problems into mathematical "blueprints" to find solutions.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/Ci0s0UWHD2o?si=oiDFptEsNxmI1Bcz&amp;start=120')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Mathematics')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="core">
+            <div class="subject-card-header"><div class="subject-icon">🇲🇾</div><h3>Bahasa Melayu</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>"Systematic Reading: For Paper 2 (Komsas), don't just memorize the plot; understand the Values (Nilai) and Lessons (Pengajaran), as these are the most common questions in the subjective section."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>KARANGAN BAHAGIAN B</strong><span class="timestamp">11:50</span></div></li>
+                    <li><div class="chapter-info"><strong>CADANGAN PERENGAN ISI</strong><span class="timestamp">26:30</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Paper 1: Penulisan (Writing)</strong><p>This paper tests your ability to express ideas clearly and creatively in two sections.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Paper 2: Kemahiran Bahasa</strong><p>This is the "technical" paper that tests your mastery of the Malay language structure.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/gsIG2aaiEG4?si=vxZ1TILy-vM-nadp&amp;start=120')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Bahasa Melayu')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="core">
+            <div class="subject-card-header"><div class="subject-icon">🇬🇧</div><h3>English</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>"The P-E-E Method: For every point in your essay, use Point, Explanation, and Example. This ensures your paragraphs are "well-developed," which is a key requirement for a high band."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>SHORT TEXT</strong><span class="timestamp">1:55</span></div></li>
+                    <li><div class="chapter-info"><strong>RATIONAL CLOZE</strong><span class="timestamp">11:00</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Paper 1: Reading and Use of English</strong><p>Read the options before the text in Part 1 to know what to look for.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Paper 4: Listening</strong><p>Use the "silent time" before the audio starts to underline keywords in the questions.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/4kGmOiAsp4g?si=OxMO1fWxHgr1quXZ&amp;start=180')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('English')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+
+        <div class="subject-card" data-category="core">
+            <div class="subject-card-header"><div class="subject-icon">🕌</div><h3>Pendidikan Islam</h3></div>
+            <div class="tutor-tip-box">
+                <span class="tip-badge">Tutor Pro-Tip</span>
+                <p>"The "Action & Result" Formula: For KBAT questions, always use the formula: Action (What should be done) + Reason (How to do it) + Result (The impact on the individual/society)."</p>
+            </div>
+            <div class="syllabus-preview">
+                <h4>🎬 Lessons</h4>
+                <ol class="chapter-steps">
+                    <li><div class="chapter-info"><strong>AL-QURAN DAN HADIS</strong><span class="timestamp">17:50</span></div></li>
+                    <li><div class="chapter-info"><strong>BIDANG AKIDAH</strong><span class="timestamp">29:50</span></div></li>
+                </ol>
+            </div>
+            <div class="subject-roadmap">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step active"><div class="step-dot"></div><div class="step-info"><strong>Al-Quran</strong><p>Focuses on interpreting sacred verses to derive life lessons on personal integrity.</p></div></div>
+                    <div class="roadmap-step"><div class="step-dot"></div><div class="step-info"><strong>Akhlak</strong><p>How to refine personality through spiritual practices that reflect the beauty of Islam.</p></div></div>
+                </div>
+            </div>
+            <div class="subject-links">
+                <a href="javascript:void(0)" onclick="playVideo('https://www.youtube.com/embed/jDxMaDt414A?si=ZaDLhDrSbge7r14p&amp;start=130')" class="btn-sub video-link">▶ Watch</a>
+                <a href="javascript:void(0)" onclick="openNotes('Pendidikan Islam')" class="btn-sub notes-link">Notes</a>
+            </div>
+        </div>
+    </main>
+
+    <section id="notes-session" class="notes-session-area" style="display: none; padding: 100px 8%; background: #fdfdfd; min-height: 100vh;">
+        <div class="session-header" style="margin-bottom: 40px;">
+            <button onclick="closeNotes()" class="btn-sub" style="background: #eee; color: #333; margin-bottom: 20px; cursor:pointer; border:none; padding: 10px 20px; border-radius: 8px;">← Back to Library</button>
+            <h2><span id="active-subject-name">Subject</span> <span class="gradient-text">Study Vault</span></h2>
+            <p>Select a chapter to view specific study materials and topical practices.</p>
+        </div>
+
+        <div class="notes-layout" style="display: flex; gap: 40px; align-items: flex-start;">
+            <aside class="chapter-sidebar" style="flex: 1; max-width: 300px; background: white; padding: 20px; border-radius: 20px; border: 1px solid #eee;">
+                <div class="chapter-list" id="chapter-nav-list" style="display: flex; flex-direction: column; gap: 10px;">
+                    </div>
+            </aside>
+
+            <div class="topic-content" style="flex: 3;">
+                <h3 id="current-chapter-title" style="margin-bottom: 20px; color: var(--dark);">Select a Chapter</h3>
+                <div class="notes-content-grid" id="notes-download-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+<div id="videoOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; justify-content:center; align-items:center;">
+    <div style="position:relative; width:80%; max-width:800px; aspect-ratio:16/9;">
+        <button onclick="closeVideo()" style="position:absolute; top:-40px; right:0; color:white; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+        <iframe id="videoPlayer" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+<button id="backToTop" class="back-to-top" title="Go to top">↑</button>
+<footer class="main-footer">
+    <div class="footer-info">
+        <p>© 2026 ASAS LEARNING. All rights reserved.</p>
+        <div class="site-meta">
+            <p><b>Website Created On: January 1, 2026</p>
+            <p><b>Last Updated: January 19, 2026</p>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bgMusic');
+    
+    // Attempt to play immediately
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            // Auto-play was prevented. 
+            // We will play the music on the first click the user makes on the page.
+            console.log("Autoplay prevented. Waiting for user interaction...");
+            document.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    }
+});
+
+    // 1. GLOBAL LOGOUT FUNCTION (Matches index.html)
+    window.logout = function() {
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userPassword');
+        alert("Logged out successfully!");
+        window.location.href = "index.html"; // Redirect to home after logout
+    };
+
+    // 2. AUTHENTICATION CHECK (Immediately redirect if not logged in)
+    if (!localStorage.getItem('userName')) {
+        alert("Please login to access the subjects!");
+        window.location.href = "login.html";
+    }
+
+    // --- COMPREHENSIVE DATA: SUBJECTS & PDF LINKS ---
+    const subjectData = {
+        'Physics': [
+            { title: 'Chapter 1: Measurements', topics: [{ name: 'FIZ', file: 'pdfs/FIZIK_F5_C1.pdf' }] },
+        ],
+        'Add-Math': [
+            { title: 'Chapter 1: Circular Measure', topics: [{ name: 'MAT +', file: 'pdfs/ADDMATH_F5_C1.pdf' }] },
+            { title: 'Chapter 2: Part I Differentiation ', topics: [{ name: 'MAT +', file: 'pdfs/ADDMATH_F5_C2_P1.pdf' }] },
+        ],
+        'Chemistry': [
+            { title: 'Chapter 1: Redox Balance', topics: [{ name: 'KIM', file: 'pdfs/KIMIA_F5_C1.pdf' }] },
+        ],
+        'Biology': [
+            { title: 'Chapter 1: Organization of Plant Tissue & Growth', topics: [{ name: 'BIO', file: 'pdfs/BIO_F5_C1.pdf' }] },
+            { title: 'Chapter 2: Leaf Structure and Function', topics: [{ name: 'BIO', file: 'pdfs/BIO_F5_C2.pdf' }] },
+        ],
+        'Sejarah': [
+            { title: 'Chapter 1: The Concept of Sovereignty', topics: [{ name: 'SEJ', file: 'pdfs/SEJ_F5_C1.pdf' }] },
+            { title: 'Chapter 2: Federal Constitution', topics: [{ name: 'SEJ', file: 'pdfs/SEJ_F5_C2.pdf' }] },
+        ],
+        'Mathematics': [
+            { title: 'Chapter 1: Variation', topics: [{ name: 'MAT', file: 'pdfs/MATH_F5_C1.pdf' }] },
+        ],
+        'Bahasa Melayu': [
+            { title: 'KATA MAJMUK', topics: [{ name: 'BM', file: 'pdfs/BM_KATA_MAJMUK.pdf' }] },
+            { title: 'KATA PEMERI', topics: [{ name: 'BM', file: 'pdfs/BM_KATA_PEMERI.pdf' }] },
+            { title: 'RUMUSAN', topics: [{ name: 'BM', file: 'pdfs/BM_RUMUSAN.pdf' }] }
+        ],
+        'English': [
+            { title: 'ADVERBS', topics: [{ name: 'ENG', file: 'pdfs/ENG_ADVERBS.pdf' }] },
+            { title: 'CONJUNCTION', topics: [{ name: 'ENG', file: 'pdfs/ENG_CONJUNCTION.pdf' }] },
+            { title: 'COUNTABLE & UNCOUNTABLE NOUNS', topics: [{ name: 'ENG', file: 'pdfs/ENG_COUNTABLE_&_UNCOUNTABLE_NOUNS.pdf' }] },
+        ],
+        'Pendidikan Islam': [
+            { title: 'FULL NOTES', topics: [{ name: 'PAI', file: 'pdfs/PAI_FULL_NOTES.pdf' }] }
+        ]
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- PART 1: UPDATE NAVIGATION BAR (Same as index.html logic) ---
+        const loggedInUser = localStorage.getItem('userName');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (loggedInUser && navMenu) {
+            navMenu.innerHTML = `
+                <a href="index.html">Home</a>
+                <a href="subjects.html" class="active">Subjects</a>
+                <a href="courses.html">Courses</a>
+                <a href="#" style="font-weight: 800; color: #6366f1;">Hi, ${loggedInUser}!</a>
+                <a href="#" onclick="logout()" class="btn-nav-primary" style="background: #f43f5e;">Logout</a>
+            `;
+        }
+
+        // --- PART 2: SUBJECT PAGE UI LOGIC ---
+        const searchInput = document.getElementById('subjectSearch');
+        const filterTags = document.querySelectorAll('.f-tag');
+        const subjectCards = document.querySelectorAll('.subject-card');
+        const notesSection = document.getElementById('notes-session');
+        const subjectsGrid = document.getElementById('subjectsGrid');
+        const subjectsHeader = document.querySelector('.subjects-header');
+
+        function performFilter() {
+            const query = searchInput.value.toLowerCase();
+            const activeFilterElement = document.querySelector('.f-tag.active');
+            const activeFilter = activeFilterElement ? activeFilterElement.getAttribute('data-filter') : 'all';
+
+            subjectCards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const category = card.getAttribute('data-category');
+                const matchesSearch = title.includes(query);
+                const matchesFilter = (activeFilter === 'all' || category === activeFilter);
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = ""; 
+                    card.style.opacity = "1";
+                } else {
+                    card.style.display = "none";
+                    card.style.opacity = "0";
+                }
+            });
+        }
+
+        if(searchInput) searchInput.addEventListener('input', performFilter);
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                performFilter();
+            });
+        });
+
+        window.openNotes = function(subjectName) {
+            document.getElementById('active-subject-name').innerText = subjectName;
+            const chapterList = document.getElementById('chapter-nav-list');
+            chapterList.innerHTML = ''; 
+            const chapters = subjectData[subjectName] || [{title: 'General Notes', topics: [{name: 'Full Syllabus Summary', file: '#'}]}];
+
+            chapters.forEach((ch, index) => {
+                const btn = document.createElement('div');
+                btn.className = `chapter-item ${index === 0 ? 'active' : ''}`;
+                btn.innerHTML = `<strong>${ch.title}</strong>`;
+                btn.onclick = () => {
+                    document.querySelectorAll('.chapter-item').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadTopics(ch);
+                };
+                chapterList.appendChild(btn);
+            });
+
+            loadTopics(chapters[0]);
+            subjectsGrid.style.display = 'none';
+            subjectsHeader.style.display = 'none';
+            notesSection.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        function loadTopics(chapter) {
+            document.getElementById('current-chapter-title').innerText = chapter.title;
+            const grid = document.getElementById('notes-download-grid');
+            grid.innerHTML = '';
+
+            chapter.topics.forEach(topic => {
+                grid.innerHTML += `
+                    <div class="note-download-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-info">
+                            <h4>${topic.name}</h4>
+                            <p>Premium PDF Notes</p>
+                        </div>
+                        <a href="${topic.file}" target="_blank" class="btn-nav-primary" style="padding: 8px 15px; font-size: 0.75rem; text-decoration:none; border-radius:8px;">Download</a>
+                    </div>
+                `;
+            });
+        }
+
+        window.closeNotes = function() {
+            subjectsGrid.style.display = ''; 
+            subjectsHeader.style.display = 'block';
+            notesSection.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    });
+
+window.playVideo = function(url) {
+    if(!url) return alert("Video coming soon!");
+    document.getElementById('videoPlayer').src = url;
+    document.getElementById('videoOverlay').style.display = 'flex';
+};
+
+window.closeVideo = function() {
+    document.getElementById('videoPlayer').src = "";
+    document.getElementById('videoOverlay').style.display = 'none';
+};
+
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    // Get total height of the page
+    const scrollHeight = document.documentElement.scrollHeight;
+    // Get current scroll position + height of the visible screen
+    const scrollPosition = window.innerHeight + window.pageYOffset;
+
+    // Show button only if within 300px of the bottom
+    // You can change '300' to '100' if you want it even closer to the bottom
+    if ((scrollHeight - scrollPosition) < 1000) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    if (audio.paused) {
+        audio.play();
+        btn.innerText = "🎵";
+    } else {
+        audio.pause();
+        btn.innerText = "🔇";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bgMusic');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volIcon = document.getElementById('volIcon');
+
+    // Set initial volume to 50%
+    audio.volume = 0.5;
+
+    // Listen for slider changes
+    volumeSlider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        audio.volume = value;
+
+        // Update icon based on volume level
+        if (value == 0) {
+            volIcon.innerText = "🔇";
+        } else if (value < 0.5) {
+            volIcon.innerText = "🔉";
+        } else {
+            volIcon.innerText = "🔊";
+        }
+    });
+});
+
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    // Add leading zeros (e.g., 09:05:01 instead of 9:5:1)
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('nav-clock').textContent = timeString;
+}
+
+// Call it immediately and then every 1 second
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>

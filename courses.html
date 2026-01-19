@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | ASAS LEARNING</title>
+    <link rel="stylesheet" href="Style_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body class="courses-page">
+
+<nav class="navbar">
+    <div class="logo-clock-container" style="display: flex; align-items: center; gap: 15px;">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="logo">ASAS<span>LEARNING</span></div>
+        </a>
+        <div id="nav-clock" style="font-weight: 600; color: var(--primary); font-family: monospace; background: rgba(99, 102, 241, 0.1); padding: 4px 10px; border-radius: 8px;">
+            00:00:00
+        </div>
+    </div>
+
+    <div class="nav-menu">
+        <a href="index.html" class="active">About Us</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="courses.html">Courses</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="btn-nav-primary">Join for Free</a>
+    </div>
+</nav>
+
+
+    <main class="courses-container">
+        <aside class="sidebar" style="background: transparent; box-shadow: none; padding: 0;">
+            <div class="sidebar-box" style="background: white; padding: 25px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px;">Filters</h3>
+                <div class="filter-group">
+                    <h4>Subject Category</h4>
+                    <label><input type="radio" name="cat" value="all" checked onclick="filterByCategory('all')"> All Subjects</label>
+                    <label><input type="radio" name="cat" value="science" onclick="filterByCategory('science')"> Science Stream</label>
+                    <label><input type="radio" name="cat" value="core" onclick="filterByCategory('core')"> Core Subject</label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Sort By</h4>
+                    <label><input type="radio" name="sort" value="default" checked onclick="sortCourses('default')"> Default</label>
+                    <label><input type="radio" name="sort" value="hot" onclick="sortCourses('hot')"> Hot Items</label>
+                    <label><input type="radio" name="sort" value="reviews" onclick="sortCourses('reviews')"> Highest Reviews</label>
+                </div>
+                <button class="btn-nav-primary" style="width: 100%; margin-top: 10px; font-size: 0.8rem;" onclick="location.reload()">Reset All</button>
+            </div>
+
+            <div class="sidebar-box" style="background: white; padding: 25px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05);">
+                <h3 style="display: flex; justify-content: space-between; align-items: center;">
+                    Your Cart 
+                    <span id="cart-count" style="background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px;">0</span>
+                </h3>
+                <div id="cart-items" style="margin-top: 15px;">
+                    <p style="font-size: 0.85rem; color: #94a3b8; text-align: center;">Your cart is empty</p>
+                </div>
+                <div id="cart-total" style="display:none; margin-top: 15px; border-top: 1px dashed #eee; padding-top: 15px;">
+                    <div style="display:flex; justify-content:space-between; font-weight:800; margin-bottom: 15px;">
+                        <span>Total:</span>
+                        <span id="total-price">RM 0</span>
+                    </div>
+                    <button class="btn-nav-primary" style="width:100%; background: #10b981;" onclick="openPaymentModal()">Checkout Now</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="course-content">
+            <div class="search-header">
+                <h2>EXPLORE <span class="gradient-text">COURSES</span></h2>
+                <input type="text" id="courseSearch" placeholder="Search for courses..." class="search-bar" onkeyup="filterCourses()">
+            </div>
+
+            <div id="noResults" style="display:none; text-align:center; padding: 40px; color: #64748b;">
+                <p>No courses found matching your search.</p>
+            </div>
+
+            <div class="course-grid" id="courseGrid">
+                <div class="course-card featured" data-id="1" data-purchases="5000" data-reviews="8000">
+                    <div class="card-tag science">Science Stream</div>
+                    <div class="course-thumb addmath img-addmath"></div>
+                    <div class="course-info">
+                        <h3>Add-Math Form 5</h3>
+                        <p>The "No-Formula" technique for Paper 2</p>
+                        <div class="course-stats"><span>🔥 6.5k Enrolled</span><span>⭐ 4.9 (6k)</span></div>
+                        <div class="course-meta"><span class="price">RM 55/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Add-Math Form 5', 'Miss Debbie', 'RM 55/mo', 'debbie', 'BSc Mathematics (UM). 10+ years coaching experience.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card featured" data-id="2" data-purchases="8000" data-reviews="6000">
+                    <div class="card-tag core">Core Subject</div>
+                    <div class="course-thumb physics img-sejarah"></div>
+                    <div class="course-info">
+                        <h3>Sejarah Form 5</h3>
+                        <p>Scoring A+ with KBAT answering logic</p>
+                        <div class="course-stats"><span>🔥 9.8k Enrolled</span><span>⭐ 4.8 (8.9k)</span></div>
+                        <div class="course-meta"><span class="price">RM 40/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Sejarah Form 5', 'Sir Kamal', 'RM 40/mo', 'hilmi', 'B.A. History (USM). Expert in SPM scoring techniques.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="3" data-purchases="9000" data-reviews="9000">
+                    <div class="card-tag core">Core Subject</div>
+                    <div class="course-thumb addmath img-bm"></div>
+                    <div class="course-info">
+                        <h3>Bahasa Melayu Form 5</h3>
+                        <p>The "No-Formula" technique for high-level Karangan</p>
+                        <div class="course-stats"><span>🔥 11.2k Enrolled</span><span>⭐ 5.0 (5k)</span></div>
+                        <div class="course-meta"><span class="price">RM 40/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Bahasa Melayu Form 5', 'Cikgu Hana', 'RM 40/mo', 'hana', 'Masters in Education (UKM). Senior BM Examiner.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="4" data-purchases="6000" data-reviews="4000">
+                    <div class="card-tag core">Core Subject</div>
+                    <div class="course-thumb biology img-math"></div>
+                    <div class="course-info">
+                        <h3>Mathematics Form 5</h3>
+                        <p>Mastering Financial Management and Taxation</p>
+                        <div class="course-stats"><span>🔥 7.5k Enrolled</span><span>⭐ 4.8 (4.1k)</span></div>
+                        <div class="course-meta"><span class="price">RM 45/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Mathematics Form 5', 'Sir Adam', 'RM 45/mo', 'adam', 'Chartered Accountant. Making complex math simple.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="5" data-purchases="7000" data-reviews="5000">
+                    <div class="card-tag core">Core Subject</div>
+                    <div class="course-thumb biology img-english"></div>
+                    <div class="course-info">
+                        <h3>English 1119 Form 5</h3>
+                        <p>Advanced Speaking and Writing skills</p>
+                        <div class="course-stats"><span>🔥 8.1k Enrolled</span><span>⭐ 4.8 (6.8k)</span></div>
+                        <div class="course-meta"><span class="price">RM 45/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('English 1119 Form 5', 'Madam Lee', 'RM 45/mo', 'lee', 'TESL Certified. 12 years experience in CEFR standards.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="6" data-purchases="4000" data-reviews="1000">
+                    <div class="card-tag science">Science Stream</div>
+                    <div class="course-thumb biology img-chemistry"></div>
+                    <div class="course-info">
+                        <h3>Chemistry Form 5</h3>
+                        <p>Mastering Carbon Compounds and Redox Equilibrium</p>
+                        <div class="course-stats"><span>🔥 5.4k Enrolled</span><span>⭐ 4.7 (1.5k)</span></div>
+                        <div class="course-meta"><span class="price">RM 55/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Chemistry Form 5', 'Dr. Angel', 'RM 55/mo', 'angel', 'PhD in Chemical Engineering. Focus on Redox logic.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="7" data-purchases="3000" data-reviews="2000">
+                    <div class="card-tag science">Science Stream</div>
+                    <div class="course-thumb physics img-physics"></div>
+                    <div class="course-info">
+                        <h3>Physics Form 5</h3>
+                        <p>Visualizing Quantum and Nuclear concepts for SPM</p>
+                        <div class="course-stats"><span>🔥 4.8k Enrolled</span><span>⭐ 4.8 (1.7k)</span></div>
+                        <div class="course-meta"><span class="price">RM 50/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Physics Form 5', 'Professor Chong', 'RM 50/mo', 'chong', 'Physics Specialist. Master of 3D concept visualization.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="8" data-purchases="1000" data-reviews="500">
+                    <div class="card-tag core">Core Subject</div>
+                    <div class="course-thumb biology img-islam"></div>
+                    <div class="course-info">
+                        <h3>Pendidikan Islam Form 5</h3>
+                        <p>Fast track for scoring A+ in Pendidikan Islam</p>
+                        <div class="course-stats"><span>🔥 3.2k Enrolled</span><span>⭐ 4.7 (1.1k)</span></div>
+                        <div class="course-meta"><span class="price">RM 35/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Pendidikan Islam Form 5', 'Ustaz Amin', 'RM 35/mo', 'amin', 'Al-Azhar Graduate. Specialist in Fiqh and Sirah.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card" data-id="9" data-purchases="2000" data-reviews="7000">
+                    <div class="card-tag science">Science Stream</div>
+                    <div class="course-thumb biology img-biology"></div>
+                    <div class="course-info">
+                        <h3>Biology SPM Form 5</h3>
+                        <p>Deep dive into Ecosystems and Genetic Inheritance</p>
+                        <div class="course-stats"><span>🔥 3.9k Enrolled</span><span>⭐ 4.9 (950)</span></div>
+                        <div class="course-meta"><span class="price">RM 50/mo</span></div>
+                        <button class="btn-enroll" onclick="showCourseDetails('Biology SPM Form 5', 'Sir Iman Hilmi', 'RM 50/mo', 'iman', 'PhD Molecular Biology. Expert in Genetic Inheritance.')">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="course-modal" class="modal-overlay" style="display:none;" onclick="closeCourseModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-icon" onclick="closeCourseModal()">&times;</span>
+            <div class="modal-flex">
+                <div id="modal-sidebar" class="modal-sidebar" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-front" id="modal-img-front">
+                            <span class="flip-hint">Click to see Bio 🔄</span>
+                        </div>
+                        <div class="flip-back">
+                            <h4>Qualifications</h4>
+                            <p id="modal-qualifications">Bio loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-details">
+                    <div id="enroll-form-content">
+                        <h2 id="modal-title">Course Title</h2>
+                        <p class="instructor-name">With <span id="modal-tutor">Expert Tutor</span></p>
+                        <hr>
+                        <div class="course-perks">
+                            <h4>Course Includes:</h4>
+                            <ul>
+                                <li>✨ Weekly Live Interactive Sessions</li>
+                                <li>📚 Downloadable PDF Study Modules</li>
+                                <li>🎯 Targeted Exam Practice Papers</li>
+                            </ul>
+                        </div>
+                        <div class="modal-action">
+                            <div class="price-info">
+                                <small>Monthly Subscription</small>
+                                <h3 id="modal-price">RM 0</h3>
+                            </div>
+                            <button class="btn-main" onclick="processEnrollment(this)">Confirm Enrollment</button>
+                        </div>
+                    </div>
+                    <div id="enroll-success-content" style="display:none; text-align:center; padding: 20px 0;">
+                        <div class="success-icon" style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                        <h2 style="color: #10b981;">Added to Cart!</h2>
+                        <p>This course is ready in your sidebar cart.</p>
+                        <button class="btn-main" onclick="closeCourseModal()" style="width:100%">Buy Another Course</button>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div>
+
+    <div id="payment-modal" class="modal-overlay" style="display:none;" onclick="closePaymentModalExternal(event)">
+    <div class="modal-card payment-card">
+        <span class="close-icon" onclick="closePaymentModal()">&times;</span>
+        
+        <div class="payment-header">
+            <div class="lock-icon">🔒</div>
+            <h2>Secure Checkout</h2>
+            <p>Select a payment method to unlock your courses.</p>
+        </div>
+
+        <div class="payment-methods">
+            <div class="method-item">
+                <button class="method-btn" onclick="togglePaymentDetail('online-banking-detail')">
+                    <div class="method-label">
+                        <span class="m-icon">🏦</span>
+                        <div>
+                            <strong>Online Banking</strong>
+                            <small>Manual Bank Transfer</small>
+                        </div>
+                    </div>
+                    <span class="arrow">↓</span>
+                </button>
+                <div id="online-banking-detail" class="method-content">
+                    <div class="bank-details-grid">
+                        <div class="detail-row"><span>Bank</span><strong>Maybank</strong></div>
+                        <div class="detail-row"><span>Name</span><strong>ASAS LEARNING</strong></div>
+                        <div class="detail-row"><span>Account</span><strong class="highlight">1642 5890 1234</strong></div>
+                    </div>
+                    <button class="confirm-btn" onclick="confirmPayment()">I've Transferred</button>
+                </div>
+            </div>
+
+            <div class="method-item">
+                <button class="method-btn" onclick="togglePaymentDetail('credit-card-detail')">
+                    <div class="method-label">
+                        <span class="m-icon">💳</span>
+                        <div>
+                            <strong>Credit / Debit Card</strong>
+                            <small>Visa, Mastercard</small>
+                        </div>
+                    </div>
+                    <span class="arrow">↓</span>
+                </button>
+                <div id="credit-card-detail" class="method-content" style="display:none;">
+    <div class="card-inputs">
+        <input type="text" placeholder="Card Number" class="full-input">
+        <div class="input-split">
+            <input type="text" placeholder="MM/YY" class="half-input">
+            <input type="text" placeholder="CVV" class="half-input">
+        </div>
+    </div>
+    <button class="confirm-btn primary" onclick="confirmPayment()">Pay Securely</button>
+</div>
+            </div>
+        </div>
+
+        <div class="payment-trust-footer">
+            <span>Verified Secure Payment Gateway</span>
+        </div>
+    </div>
+</div>
+<button id="backToTop" class="back-to-top" title="Go to top">↑</button>
+<footer class="main-footer">
+    <div class="footer-info">
+        <p>© 2026 ASAS LEARNING. All rights reserved.</p>
+        <div class="site-meta">
+            <p><b>Website Created On: January 1, 2026</p>
+            <p><b>Last Updated: January 19, 2026</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 1. AUTH LOGIC
+    document.addEventListener('DOMContentLoaded', function() {
+        const loggedInUser = localStorage.getItem('userName');
+        const navMenu = document.querySelector('.nav-menu');
+        if (!loggedInUser) {
+            alert("Please login to access the courses!");
+            window.location.href = "login.html";
+            return;
+        }
+        if (navMenu) {
+            navMenu.innerHTML = `
+                <a href="index.html">Home</a>
+                <a href="subjects.html">Subjects</a>
+                <a href="courses.html" class="active">Courses</a>
+                <a href="#" style="font-weight: 800; color: #6366f1;">Hi, ${loggedInUser}!</a>
+                <a href="#" id="logoutBtn" class="btn-nav-primary" style="background: #f43f5e;">Logout</a>
+            `;
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('userName');
+                window.location.href = "index.html";
+            });
+        }
+    });
+
+    // 2. CART & PAYMENT LOGIC
+    let cart = [];
+
+    function processEnrollment(btn) {
+        const title = document.getElementById('modal-title').innerText;
+        const priceStr = document.getElementById('modal-price').innerText;
+        const priceNum = parseInt(priceStr.replace(/[^0-9]/g, ''));
+
+        btn.innerHTML = "Processing...";
+        setTimeout(() => {
+            cart.push({ title, price: priceNum });
+            updateCartUI();
+            document.getElementById('enroll-form-content').style.display = 'none';
+            document.getElementById('enroll-success-content').style.display = 'block';
+            if(typeof confetti === 'function') confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        }, 800);
+    }
+
+    function updateCartUI() {
+        const cartItemsDiv = document.getElementById('cart-items');
+        const cartTotalDiv = document.getElementById('cart-total');
+        const totalPriceEl = document.getElementById('total-price');
+        const cartCountEl = document.getElementById('cart-count');
+
+        cartCountEl.innerText = cart.length;
+
+        if (cart.length === 0) {
+            cartItemsDiv.innerHTML = '<p style="font-size: 0.85rem; color: #94a3b8; text-align: center;">Your cart is empty</p>';
+            cartTotalDiv.style.display = 'none';
+            return;
+        }
+
+        cartTotalDiv.style.display = 'block';
+        cartItemsDiv.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            total += item.price;
+            cartItemsDiv.innerHTML += `
+                <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:8px;">
+                    <span>${item.title}</span>
+                    <span style="font-weight:600;">RM ${item.price}</span>
+                </div>
+            `;
+        });
+        totalPriceEl.innerText = "RM " + total;
+    }
+
+    function openPaymentModal() {
+        document.getElementById('payment-modal').style.display = 'flex';
+    }
+
+    function closePaymentModal() {
+        document.getElementById('payment-modal').style.display = 'none';
+    }
+
+    function togglePaymentDetail(id) {
+        document.getElementById('online-banking-detail').style.display = 'none';
+        document.getElementById('credit-card-detail').style.display = 'none';
+        document.getElementById(id + '-detail').style.display = 'block';
+    }
+
+    function confirmPayment() {
+    // UPDATED NOTIFICATION MESSAGE
+    alert("Payment Received! Your courses are now unlocked. Check your email for schedule.");
+    
+    // Clear the cart
+    cart = [];
+    updateCartUI();
+    
+    // Close the payment window
+    closePaymentModal();
+}
+
+// FIX FOR INPUT BOX OVERFLOW
+// This ensures MM/YY and CVV stay side-by-side inside the modal
+function fixInputAlignment() {
+    const split = document.querySelector('.input-split');
+    if(split) {
+        split.style.display = 'grid';
+        split.style.gridTemplateColumns = '1fr 1fr';
+        split.style.gap = '10px';
+    }
+}
+// Run fix when page loads
+document.addEventListener('DOMContentLoaded', fixInputAlignment);
+
+    // 3. FILTER & SORT LOGIC
+    function sortCourses(type) {
+        const grid = document.getElementById('courseGrid');
+        const cards = Array.from(grid.getElementsByClassName('course-card'));
+        cards.sort((a, b) => {
+            if (type === 'default') return parseInt(a.getAttribute('data-id')) - parseInt(b.getAttribute('data-id'));
+            if (type === 'hot') return parseInt(b.getAttribute('data-purchases')) - parseInt(a.getAttribute('data-purchases'));
+            if (type === 'reviews') return parseInt(b.getAttribute('data-reviews')) - parseInt(a.getAttribute('data-reviews'));
+        });
+        cards.forEach(card => grid.appendChild(card));
+    }
+
+    function filterByCategory(category) {
+        const cards = document.getElementsByClassName('course-card');
+        for (let i = 0; i < cards.length; i++) {
+            const tag = cards[i].querySelector('.card-tag').className.toLowerCase();
+            cards[i].style.display = (category === 'all' || tag.includes(category)) ? "" : "none";
+        }
+    }
+
+    function filterCourses() {
+        const input = document.getElementById('courseSearch').value.toLowerCase();
+        const cards = document.getElementsByClassName('course-card');
+        for (let i = 0; i < cards.length; i++) {
+            const title = cards[i].querySelector("h3").innerText.toLowerCase();
+            cards[i].style.display = title.includes(input) ? "" : "none";
+        }
+    }
+
+   function showCourseDetails(title, tutor, price, imgName, quals) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-tutor').innerText = tutor;
+    document.getElementById('modal-price').innerText = price;
+    document.getElementById('modal-qualifications').innerText = quals;
+    document.getElementById('modal-img-front').style.backgroundImage = `url('images/${imgName}.jpg')`;
+    
+    // --- ADD THIS LINE TO RESET THE BUTTON ---
+    const enrollBtn = document.querySelector('#enroll-form-content .btn-main');
+    if(enrollBtn) enrollBtn.innerHTML = "Confirm Enrollment"; 
+    // -----------------------------------------
+
+    document.getElementById('enroll-form-content').style.display = 'block';
+    document.getElementById('enroll-success-content').style.display = 'none';
+    document.getElementById('course-modal').style.display = 'flex';
+}
+    function closeCourseModal(e) {
+        if (!e || e.target.classList.contains('modal-overlay') || e.target.classList.contains('close-icon')) {
+            document.getElementById('course-modal').style.display = 'none';
+        }
+    }
+
+    function togglePaymentDetail(id) {
+    const methods = ['online-banking-detail', 'credit-card-detail'];
+    
+    methods.forEach(mId => {
+        const el = document.getElementById(mId);
+        if (!el) return;
+
+        if (mId === id) {
+            // This checks the actual visibility of the element
+            const isHidden = window.getComputedStyle(el).display === 'none';
+            el.style.display = isHidden ? 'block' : 'none';
+        } else {
+            // Hide the other one so only one is open at a time
+            el.style.display = 'none';
+        }
+    });
+}
+
+// Ensure you have these to show/hide the whole modal
+function openPaymentModal() {
+    document.getElementById('payment-modal').style.display = 'flex';
+}
+
+function closePaymentModal() {
+    document.getElementById('payment-modal').style.display = 'none';
+}
+
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    // Get total height of the page
+    const scrollHeight = document.documentElement.scrollHeight;
+    // Get current scroll position + height of the visible screen
+    const scrollPosition = window.innerHeight + window.pageYOffset;
+
+    // Show button only if within 300px of the bottom
+    // You can change '300' to '100' if you want it even closer to the bottom
+    if ((scrollHeight - scrollPosition) < 1000) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    // Add leading zeros (e.g., 09:05:01 instead of 9:5:1)
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('nav-clock').textContent = timeString;
+}
+
+// Call it immediately and then every 1 second
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>

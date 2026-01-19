@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ASAS LEARNING</title>
+    <link rel="stylesheet" href="Style_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+
+<nav class="navbar">
+    <div class="logo-clock-container" style="display: flex; align-items: center; gap: 15px;">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="logo">ASAS<span>LEARNING</span></div>
+        </a>
+        <div id="nav-clock" style="font-weight: 600; color: var(--primary); font-family: monospace; background: rgba(99, 102, 241, 0.1); padding: 4px 10px; border-radius: 8px;">
+            00:00:00
+        </div>
+    </div>
+
+    <div class="nav-menu">
+        <a href="index.html" class="active">About Us</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="courses.html">Courses</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="btn-nav-primary">Join for Free</a>
+    </div>
+</nav>
+
+    <main class="login-container">
+        <div class="login-box">
+            <div class="login-form-side">
+                <div class="form-content">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your details to continue your learning journey.</p>
+                    
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-options">
+                            <label><input type="checkbox"> Remember me</label>
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn-main" style="width: 100%;">Sign In</button>
+                    </form>
+
+                    <p class="form-footer">Don't have an account? <a href="register.html">Create one for free</a></p>
+                </div>
+            </div>
+
+            <div class="login-visual-side">
+                <div class="visual-overlay">
+                    <div class="quote-card">
+                        <p>"Education is the passport to the future."</p>
+                        <span>- ASAS LEARNING</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const emailInput = document.getElementById('email').value;
+        const passwordInput = document.getElementById('password').value;
+
+        // Get the data that was saved during registration
+        const registeredEmail = localStorage.getItem('userEmail');
+        const registeredPassword = localStorage.getItem('userPassword');
+        const registeredName = localStorage.getItem('userName');
+
+        // Logic to check if input matches registration OR the admin account
+        if ((emailInput === registeredEmail && passwordInput === registeredPassword) || 
+            (emailInput === "admin@asas.com" && passwordInput === "password123")) {
+            
+            alert("Welcome back, " + (registeredName || "Admin") + "!");
+            window.location.href = "index.html";
+        } else {
+            alert("Invalid details. Please register first or check your password.");
+        }
+    });
+
+    function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    // Add leading zeros (e.g., 09:05:01 instead of 9:5:1)
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('nav-clock').textContent = timeString;
+}
+
+// Call it immediately and then every 1 second
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
